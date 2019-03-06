@@ -31,6 +31,10 @@ The picture below is their comparison table. (<mark>Note:</mark> Because the int
 
 <img src="https://m5stack.oss-cn-shenzhen.aliyuncs.com/image/m5-docs_table/camera_comparison/camera_main_comparison_en.png">
 
+#### The picture of A model and B model
+
+<img src="https://m5stack.oss-cn-shenzhen.aliyuncs.com/image/m5-docs_table/camera_comparison/diff_A_B.png">
+
 ### Interface Comparison
 
 <img src="https://m5stack.oss-cn-shenzhen.aliyuncs.com/image/m5-docs_table/camera_comparison/CameraPinComparison_en.png">
