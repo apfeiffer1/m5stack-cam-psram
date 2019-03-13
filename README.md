@@ -1,5 +1,7 @@
 # [ESP32CAM](https://docs.m5stack.com/#/en/unit/esp32cam) Firmware
 
+English | [中文](https://github.com/m5stack/m5stack-cam-psram/blob/NoPsram/README_zh_CN.md) | [日本語](https://github.com/m5stack/m5stack-cam-psram/blob/NoPsram/README_ja.md)
+
 ## Firmware Description
 
 This repository based in [esp32-camera](https://github.com/espressif/esp32-camera.git) is the firmware for [ESP32CAM](https://docs.m5stack.com/#/en/unit/esp32cam). Additionally it provides a few tools, which allow converting the captured frame data to the more common BMP and JPEG formats.
@@ -18,8 +20,7 @@ The main differences between these cameras are **memory**, **interface**, **lens
 
 - [NoPsram](https://github.com/m5stack/m5stack-cam-psram/tree/NoPsram) -> ESP32CAM
 
-- [FishEye](https://github.com/m5stack/m5stack-cam-psram/tree/FishEye
-) -> M5CameraF
+- [FishEye](https://github.com/m5stack/m5stack-cam-psram/tree/FishEye) -> M5CameraF
 
 ### Comparison of different versions of cameras
 
