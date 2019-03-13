@@ -1,16 +1,16 @@
 # M5Stack Camera with psram base in [esp32-camera](https://github.com/espressif/esp32-camera.git)
 
-English | [中文](https://github.com/m5stack/m5stack-cam-psram/blob/ModeA/README_zh_CN.md) | [日本語](https://github.com/m5stack/m5stack-cam-psram/blob/ModeA/README_ja.md)
+[English](https://github.com/m5stack/m5stack-cam-psram/blob/ModeA/README.md) | [中文](https://github.com/m5stack/m5stack-cam-psram/blob/ModeA/README_zh_CN.md) | 日本語
 
-## General Information
+## 一般情報
 
-This repository hosts ESP32 compatible driver for OV2640 image sensors. Additionally it provides a few tools, which allow converting the captured frame data to the more common BMP and JPEG formats.
+このリポジトリは、OV2640イメージセンサー用のESP32互換ドライバをホストしています。 さらにキャプチャされたフレームデータを一般的なBMPおよびJPEG形式への変換するツールも提供します。
 
-## Note
+## ノート
 
-- We have two versions of the psram camera(A model and B model) as the following figure shown.
+- 次の図に示すように、psramカメラには2つのバージョン（A Model と B Model）があります。
 
-- This repository is A model firmware. If you are using the B model, you need to make the following changes.
+- このリポジトリはAモデルファームウェアです。 Bモデルを使用している場合は、`master`ブランチを参照してください。
 
 *The difference between `ESP32CAM` `M5Camera(A model)` `M5Camera(B model)` `M5CameraF` `M5CameraX`: https://github.com/m5stack/M5-Schematic/blob/master/Units/m5camera/CameraComparison_en.md*
 
@@ -29,17 +29,17 @@ uart_set_pin(UART_NUM_1, 13, 4, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 
 ![img](cam.jpg)
 
-## Important to Remember
+## 重要なポイント
 
-- Except when using CIF or lower resolution with JPEG, the driver requires PSRAM to be installed and activated.
-- Using YUV or RGB puts a lot of strain on the chip because writing to PSRAM is not particularly fast. The result is that image data might be missing. This is particularly true if WiFi is enabled. If you need RGB data, it is recommended that JPEG is captured and then turned into RGB using `fmt2rgb888` or `fmt2bmp`/`frame2bmp`.
-- When 1 frame buffer is used, the driver will wait for the current frame to finish (VSYNC) and start I2S DMA. After the frame is acquired, I2S will be stopped and the frame buffer returned to the application. This approach gives more control over the system, but results in longer time to get the frame.
-- When 2 or more frame bufers are used, I2S is running in continuous mode and each frame is pushed to a queue that the application can access. This approach puts more strain on the CPU/Memory, but allows for double the frame rate. Please use only with JPEG.
+- JPEGまたはCIF以下の解像度の場合を除き、ドライバでPSRAMをアクティブにする必要があります。
+- PSRAMへの書き込みは高速ではないため、YUVまたはRGBを使用するとチップに大きな負担がかかります。その結果、画像データが失われる可能性があります。WiFiが有効になっている場合、特に顕著です。RGBデータが必要な場合は、先にJPEGとしてキャプチャしてから、`fmt2rgb888`/`fmt2bmp`/`frame2bmp`を使用してRGBに変換することをお勧めします。
+- 1フレームバッファを使用する場合、ドライバは現在のフレームが終了するのを待って（VSYNC）、I2S DMAを開始します。フレームが取得された後、I2Sは停止し、フレームバッファはアプリケーションに返されます。この方法ではシステムをより細かく制御できますが、フレームを取得する時間が長くなります。
+- 2つ以上のフレームバッファが使用されている場合、I2Sは連続モードで動作しており、各フレームはアプリケーションがアクセスできるキューにプッシュされます。この方法では、CPU/メモリに負担がかかりますが、フレームレートを2倍にすることができます。 注意点としてJPEGのみで使用してください。
 
-## Installation Instructions
+## インストール手順
 
-- Clone or download and extract the repository to the components folder of your ESP-IDF project
-- Make
+- あなたのESP-IDFプロジェクトのコンポーネントフォルダーにリポジトリをクローンまたはダウンロードして解凍します。
+- `Make`
 
 ## API
 

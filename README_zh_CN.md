@@ -1,16 +1,16 @@
 # M5Stack Camera with psram base in [esp32-camera](https://github.com/espressif/esp32-camera.git)
 
-English | [中文](https://github.com/m5stack/m5stack-cam-psram/blob/ModeA/README_zh_CN.md) | [日本語](https://github.com/m5stack/m5stack-cam-psram/blob/ModeA/README_ja.md)
+[English](https://github.com/m5stack/m5stack-cam-psram/blob/ModeA/README.md) | 中文 | [日本語](https://github.com/m5stack/m5stack-cam-psram/blob/ModeA/README_ja.md)
 
-## General Information
+## 一般信息
 
-This repository hosts ESP32 compatible driver for OV2640 image sensors. Additionally it provides a few tools, which allow converting the captured frame data to the more common BMP and JPEG formats.
+该存储库为OV2640图像传感器提供ESP32兼容驱动程序。 此外，它还提供了一些工具，可以将捕获的帧数据转换为更常见的BMP和JPEG格式。
 
-## Note
+## 注意
 
-- We have two versions of the psram camera(A model and B model) as the following figure shown.
+- 我们有两个版本的psram相机（A型号和B型号），如下图所示。
 
-- This repository is A model firmware. If you are using the B model, you need to make the following changes.
+- 此存储库是模型固件。 如果您使用的是B model，则需要看`master`分支。
 
 *The difference between `ESP32CAM` `M5Camera(A model)` `M5Camera(B model)` `M5CameraF` `M5CameraX`: https://github.com/m5stack/M5-Schematic/blob/master/Units/m5camera/CameraComparison_en.md*
 
@@ -29,17 +29,17 @@ uart_set_pin(UART_NUM_1, 13, 4, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 
 ![img](cam.jpg)
 
-## Important to Remember
+## 重要的是要记住
 
-- Except when using CIF or lower resolution with JPEG, the driver requires PSRAM to be installed and activated.
-- Using YUV or RGB puts a lot of strain on the chip because writing to PSRAM is not particularly fast. The result is that image data might be missing. This is particularly true if WiFi is enabled. If you need RGB data, it is recommended that JPEG is captured and then turned into RGB using `fmt2rgb888` or `fmt2bmp`/`frame2bmp`.
-- When 1 frame buffer is used, the driver will wait for the current frame to finish (VSYNC) and start I2S DMA. After the frame is acquired, I2S will be stopped and the frame buffer returned to the application. This approach gives more control over the system, but results in longer time to get the frame.
-- When 2 or more frame bufers are used, I2S is running in continuous mode and each frame is pushed to a queue that the application can access. This approach puts more strain on the CPU/Memory, but allows for double the frame rate. Please use only with JPEG.
+- 除了使用带有JPEG或CIF更低分辨率外，驱动程序还需要安装和激活PSRAM。
+- 使用YUV或RGB会给芯片带来很大的压力，因为写入PSRAM并不是特别快。 结果是图像数据可能丢失。 如果启用WiFi，则尤其如此。 如果您需要RGB数据，建议使用`fmt2rgb888`或`fmt2bmp`/`frame2bmp`捕获JPEG然后转换为RGB。
+- 当使用1帧缓冲区时，驱动程序将等待当前帧完成（VSYNC）并启动I2S DMA。 获取帧后，I2S将停止，帧缓冲区返回到应用程序。 这种方法可以更好地控制系统，但会导致获得帧的时间更长。
+- 当使用2个或更多帧缓冲时，I2S以连续模式运行，每个帧被推送到应用程序可以访问的队列。 这种方法会给CPU/Memory带来更大的压力，但允许帧速率加倍。 请仅使用JPEG。
 
-## Installation Instructions
+## 安装说明
 
-- Clone or download and extract the repository to the components folder of your ESP-IDF project
-- Make
+- 克隆或下载并将存储库解压缩到ESP-IDF项目的components文件夹中
+- `Make`
 
 ## API
 
