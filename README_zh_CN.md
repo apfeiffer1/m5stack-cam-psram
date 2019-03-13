@@ -12,7 +12,7 @@
 
 - 此存储库是模型固件。 如果您使用的是B model，则需要看`master`分支。
 
-*The difference between `ESP32CAM` `M5Camera(A model)` `M5Camera(B model)` `M5CameraF` `M5CameraX`: https://github.com/m5stack/M5-Schematic/blob/master/Units/m5camera/CameraComparison_en.md*
+*`ESP32CAM` `M5Camera(A model)` `M5Camera(B model)` `M5CameraF` `M5CameraX`之间的区别: https://github.com/m5stack/M5-Schematic/blob/master/Units/m5camera/CameraComparison_en.md*
 
 ```c
 /*

@@ -12,7 +12,7 @@
 
 - このリポジトリはA model向けファームウェアをホストしています。B model向けは、`master`ブランチを参照してください。
 
-*The difference between `ESP32CAM` `M5Camera(A model)` `M5Camera(B model)` `M5CameraF` `M5CameraX`: https://github.com/m5stack/M5-Schematic/blob/master/Units/m5camera/CameraComparison_en.md*
+*`ESP32CAM` `M5Camera(A model)` `M5Camera(B model)` `M5CameraF` `M5CameraX`の違いは[こちら](https://github.com/m5stack/M5-Schematic/blob/master/Units/m5camera/CameraComparison_en.md)を参照してください。*
 
 ```c
 /*
