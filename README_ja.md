@@ -10,7 +10,7 @@
 
 - 次の図に示すように、psramカメラには2つのバージョン（A Model と B Model）があります。
 
-- このリポジトリはAモデルファームウェアです。 Bモデルを使用している場合は、`master`ブランチを参照してください。
+- このリポジトリはA model向けファームウェアをホストしています。B model向けは、`master`ブランチを参照してください。
 
 *The difference between `ESP32CAM` `M5Camera(A model)` `M5Camera(B model)` `M5CameraF` `M5CameraX`: https://github.com/m5stack/M5-Schematic/blob/master/Units/m5camera/CameraComparison_en.md*
 
