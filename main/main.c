@@ -15,6 +15,9 @@
 #include "esp_event_loop.h"
 #include "esp_http_server.h"
 
+// keep your WiFi params (SSID, pwd) here:
+#include "WiFi_AP_Params.h"
+
 static const char* TAG = "camera";
 
 #define M5_CAM_KIND 2 // 1 --> A model, 2 --> B model
@@ -280,6 +283,36 @@ static esp_err_t event_handler(void* ctx, system_event_t* event)
 }
 
 static void wifi_init_softap() 
+{
+  s_wifi_event_group = xEventGroupCreate();
+
+  tcpip_adapter_init();
+  ESP_ERROR_CHECK(esp_event_loop_init(event_handler, NULL));
+
+  wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+  ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+
+  ESP_ERROR_CHECK( esp_wifi_set_storage(WIFI_STORAGE_RAM) );
+  ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_STA) );
+  wifi_config_t wifi_config = {
+      .sta = {.ssid = ESP_WIFI_SSID_STA,
+              .password = ESP_WIFI_PASS_STA,
+              .bssid_set = false
+             }
+  };
+
+  ESP_ERROR_CHECK( esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config) );
+  ESP_ERROR_CHECK( esp_wifi_start() );
+  ESP_ERROR_CHECK( esp_wifi_connect() );
+
+  // uint8_t addr[4] = {192, 168, 7, 11};
+  // s_ip_addr = *(ip4_addr_t*)&addr;
+
+  ESP_LOGI(TAG, "wifi_init_softap finished.SSID:%s password:%s",
+           ESP_WIFI_SSID, "*");
+}
+
+static void wifi_init_softap_orig() 
 {
   s_wifi_event_group = xEventGroupCreate();
 

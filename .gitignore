@@ -1,3 +1,6 @@
+# WiFi Params (SSID, pwd)
+WiFi_AP_Params.h
+
 # Compiled Object files
 *.slo
 *.lo
